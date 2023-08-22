@@ -1,27 +1,5 @@
-class Motor:
-    def __init__(self, numeroCilindros, tipo, registro):
-        self.numeroCilindros=numeroCilindros
-        self.tipo=tipo
-        self.registro=registro
-
-    def cambiarRegistro(self, registro):
-            self.registro=registro
-        
-    def asignarTipo(self, tipo):
-            if tipo=="electrico" or tipo=="gasolina":
-                self.tipo=tipo
-
-
-class Asiento:
-    def __init__(self,color,precio,registro):
-        self.color=color
-        self.precio=precio
-        self.registro=registro
-
-    def cambiarcolor(self, color):
-        if color in ["rojo", "verde", "amarillo", "negro", "blanco"]:
-            self.color=color
-        
+from motor import Motor
+from asiento import Asiento
 
 class Auto:
     cantidadCreados=0
@@ -50,3 +28,13 @@ class Auto:
         
         else:
             print('Las piezas no sonoriginales')
+
+motor1 = Motor(4, "gasolina", "ABC123")
+asientos = [Asiento("rojo", 100, "XYZ001"), Asiento("verde", 120, "XYZ002")]
+
+# Crear instancia de Auto
+auto1 = Auto("Sedán", 20000, asientos, "Toyota", motor1, "AUTO001")
+
+# Verificar integridad
+auto2 = Auto("SUV", 35000, asientos, "Honda", motor1, "AUTO002")
+auto1.verificarIntegridad(auto2)
