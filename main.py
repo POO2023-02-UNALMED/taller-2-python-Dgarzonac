@@ -46,9 +46,9 @@ class Auto:
                         break
         
         if verificador:
-            return 'Auto original'
+            print('Auto original')
         else:
-            return 'Las piezas no son originales'
+            print('Las piezas no son originales')
             
     def cantidadAsientos(self):
         num_asientos =0
