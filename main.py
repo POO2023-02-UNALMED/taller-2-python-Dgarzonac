@@ -40,7 +40,7 @@ class Auto:
         if self.motor.registro != registro_auto:
             verificador = False
             for asiento in self.asientos:
-                if asiento != None:
+                if asiento is not  None:
                     if asiento.registro != registro_auto:
                         verificador = False
                         break
