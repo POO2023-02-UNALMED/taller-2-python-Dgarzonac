@@ -36,19 +36,20 @@ class Auto:
     def verificarIntegridad(self):
         registro_auto = self.registro
         verificador = True
-        
+    
         if self.motor.registro != registro_auto:
             verificador = False
-            for asiento in self.asientos:
-                if asiento is not  None:
-                    if asiento.registro != registro_auto:
-                        verificador = False
-                        break
-        
+    
+        for asiento in self.asientos:
+            if asiento is not None and asiento.registro != registro_auto:
+                verificador = False
+                break
+    
         if verificador:
-            print('Auto original')
+            return 'Auto original'
         else:
-            print('Las piezas no son originales')
+            return 'Las piezas no son originales'
+    
             
     def cantidadAsientos(self):
         num_asientos =0
