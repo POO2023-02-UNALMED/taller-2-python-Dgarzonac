@@ -1,12 +1,12 @@
 class Asiento:
-    def __init__(self,color,precio,registro):
-        self.color=color
-        self.precio=precio
-        self.registro=registro
+    def __init__(self, color, precio, registro):
+        self.color = color
+        self.precio = precio
+        self.registro = registro
 
-    def cambiarcolor(self, color):
+    def cambiarColor(self, color):
         if color in ["rojo", "verde", "amarillo", "negro", "blanco"]:
-            self.color=color
+            self.color = color
 
 class Motor:
     def __init__(self, numeroCilindros, tipo, registro):
@@ -22,29 +22,34 @@ class Motor:
             self.tipo = tipo
 
 class Auto:
-    cantidadCreados=0
+    cantidadCreados = 0
     
-    def __init__(self, modelo, precio, asientos, marca,motor,registro):
-        self.modelo=modelo
-        self.precio=precio
-        self.asientos=asientos
-        self.marca=marca
-        self.registro=registro
-        self.motor=motor
-        Auto.cantidadCreados+=1
+    def __init__(self, modelo, precio, asientos, marca, motor, registro):
+        self.modelo = modelo
+        self.precio = precio
+        self.asientos = asientos
+        self.marca = marca
+        self.registro = registro
+        self.motor = motor
+        Auto.cantidadCreados += 1
 
-    def verificarintegridad(self, auto):
-        registro1=auto.registro
-        verificador= False
-        if auto.motor.registro == registro1:
-            verificador=True
-            for i in auto.asientos:
-                if i.registro != registro1:
-                    verificador = False
-                    break
+    def verificarIntegridad(self):
+        registro_auto = self.registro
+        verificador = True
+        
+        if self.motor.registro != registro_auto:
+            verificador = False
+        
+        for asiento in self.asientos:
+            if asiento.registro != registro_auto:
+                verificador = False
+                break
         
         if verificador:
-            print('Auto original')
-        
+            return 'Auto original'
         else:
-            print('Las piezas no sonoriginales')
+            return 'Las piezas no son originales'
+            
+    def cantidadAsientos(self):
+        num_asientos = len(self.asientos)
+        return num_asientos
