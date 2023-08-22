@@ -39,11 +39,11 @@ class Auto:
         
         if self.motor.registro != registro_auto:
             verificador = False
-        
-        for asiento in self.asientos:
-            if asiento.registro != registro_auto:
-                verificador = False
-                break
+            for asiento in self.asientos:
+                if asiento != None:
+                    if asiento.registro != registro_auto:
+                        verificador = False
+                        break
         
         if verificador:
             return 'Auto original'
@@ -51,5 +51,8 @@ class Auto:
             return 'Las piezas no son originales'
             
     def cantidadAsientos(self):
-        num_asientos = len(self.asientos)
+        num_asientos =0
+        for i in self.asientos:
+            if i is not None:
+                num_asientos+=1
         return num_asientos
